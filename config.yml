@@ -1,0 +1,14 @@
+# cookie_secret_path: "PATH_TO_COOKIE_SECRET"
+ca_certs: []
+# clients:
+#   CLIENT_ID:
+#     issuer: "https://id.example.com/oauth2/openid/CLIENT_ID"
+#     client_id: "CLIENT_ID"
+#     client_secret_path: "PATH_TO_CLIENT_SECRET"
+#     scopes: ["openid", "email"]
+#     roles_claim: "roles"
+#     auth_cookie_ttl_secs: 600
+#     session_cookie_ttl_secs: 60
+#     keep_access_token: true
+#     keep_refresh_token: true
+#     real_ip_header: "X-Real-Ip"
