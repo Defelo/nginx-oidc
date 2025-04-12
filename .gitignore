@@ -1,0 +1,5 @@
+/target
+*_secret
+socket
+config.dev.yml
+.nixos-test-history

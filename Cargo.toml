@@ -1,0 +1,37 @@
+[package]
+name = "nginx-oidc"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+self_named_module_files = "warn"
+dbg_macro = "warn"
+todo = "warn"
+unwrap_used = "warn"
+expect_used = "warn"
+
+[dependencies]
+anyhow = { version = "1.0.98", default-features = false }
+axum = { version = "0.8.3", default-features = false, features = ["http1", "http2", "tokio", "query"] }
+axum-extra = { version = "0.10.1", default-features = false, features = ["cookie-private", "cookie-key-expansion"] }
+clap = { version = "4.5.36", default-features = true, features = ["derive"] }
+clap_complete = { version = "4.5.47", default-features = false, features = ["unstable-dynamic"] }
+config = { version = "0.15.11", default-features = false, features = ["yaml"] }
+futures = { version = "0.3.31", default-features = false }
+openidconnect = { version = "4.0.0", default-features = false, features = [
+  "reqwest",
+  "rustls-tls",
+  "timing-resistant-secret-traits",
+] }
+serde = { version = "1.0.219", default-features = false, features = ["derive"] }
+serde_json = { version = "1.0.140", default-features = false, features = ["std"] }
+tokio = { version = "1.44.2", default-features = false, features = ["rt-multi-thread", "macros"] }
+tracing = { version = "0.1.41", default-features = false }
+tracing-subscriber = { version = "0.3.19", default-features = false, features = ["ansi", "env-filter", "fmt"] }
+
+[dev-dependencies]
+pretty_assertions = { version = "1.4.1", default-features = false, features = ["std"] }
+tempfile = { version = "3.19.1", default-features = false }
