@@ -21,7 +21,10 @@
 
   formatter.prettier = {
     command = lib.getExe pkgs.nodePackages.prettier;
-    includes = [ "*.yml" ];
+    includes = [
+      "*.json"
+      "*.yml"
+    ];
     options = [ "--write" ];
   };
 

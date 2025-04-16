@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": ["config:recommended"],
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": ["cargo"],
+      "automerge": true
+    },
+    {
+      "groupName": "rust:axum",
+      "matchManagers": ["cargo"],
+      "matchPackageNames": ["axum", "axum-*"]
+    }
+  ],
+
+  "postUpgradeTasks": {
+    "commands": ["nix run .#generate"],
+    "executionMode": "branch"
+  }
+}
