@@ -14,7 +14,7 @@ unwrap_used = "warn"
 expect_used = "warn"
 
 [dependencies]
-anyhow = { version = "1.0.97", default-features = false }
+anyhow = { version = "1.0.98", default-features = false }
 axum = { version = "0.8.3", default-features = false, features = ["http1", "http2", "tokio", "query"] }
 axum-extra = { version = "0.10.1", default-features = false, features = ["cookie-private", "cookie-key-expansion"] }
 clap = { version = "4.5.36", default-features = true, features = ["derive"] }
