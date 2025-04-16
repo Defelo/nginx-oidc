@@ -80,4 +80,9 @@
         }
       );
     };
+
+  nixConfig = {
+    extra-substituters = "https://attic.defelo.de/nginx-oidc";
+    extra-trusted-public-keys = "nginx-oidc:SKgT2SASfc9+wOmqMP0AgJOE7j92m3Yt6u7+/v0gxNc=";
+  };
 }

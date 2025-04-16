@@ -1,0 +1,38 @@
+name: Nix
+
+on:
+  push:
+    branches: [develop, staging, trying]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - run: nix fmt -- --ci --on-unmatched error
+
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - run: nix run --accept-flake-config .#generate
+      - run: git diff --exit-code
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: ryanccn/attic-action@v0
+        with:
+          endpoint: https://attic.defelo.de/
+          cache: nginx-oidc
+          # atticd-atticadm make-token --sub github --validity 1y --pull nginx-oidc --push nginx-oidc
+          token: ${{ secrets.ATTIC_TOKEN }}
+      - run: nix build -L --keep-going .#checks
