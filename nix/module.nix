@@ -214,6 +214,8 @@ in
       environment.RUST_LOG = cfg.logLevel;
 
       serviceConfig = {
+        Type = "exec";
+        Restart = "always";
         User = "nginx-oidc";
         Group = "nginx-oidc";
         DynamicUser = true;
